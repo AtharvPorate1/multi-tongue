@@ -69,7 +69,7 @@ def combine_video(video_filename, audio_filename):
     subprocess.run(command)
     return output_filename
 
-st.title("Mother Tongue 📺🎵")
+st.title("Mother Tongue AI 📺🎵")
 
 link = st.text_input("Link to Youtube Video", key="link")
 language = st.selectbox("Translate to", ("Hindi", "Marathi", "Tamil", "telugu", "Spanish"))
