@@ -11,6 +11,8 @@ from elevenlabs import generate, set_api_key
 import subprocess
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
+api_key = st.secrets["YOUR_OPENAI_API_KEY"]
+xi_api_key = st.secrets["xi_api_key"]
 
 def shorten_audio(input_filename):
     output_filename = "cut_audio.mp4"
@@ -28,7 +30,7 @@ def generate_translation(original_text, destination_language):
 )
     
     # Use your OpenAI API key here
-    api_key = "YOUR_OPENAI_API_KEY"
+    
     
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -50,7 +52,7 @@ def generate_dubs(text):
 
     audio = generate(
         text=text,
-        voice="Bella",
+        voice="Antoni",
         model='eleven_multilingual_v1'
     )
 
@@ -70,7 +72,7 @@ def combine_video(video_filename, audio_filename):
 st.title("AutoDubs 📺🎵")
 
 link = st.text_input("Link to Youtube Video", key="link")
-language = st.selectbox("Translate to", ("French", "German", "Hindi", "Italian", "Polish", "Portuguese", "Spanish"))
+language = st.selectbox("Translate to", ("Hindi", "Marathi", "Tamil", "telugu", "Spanish"))
 
 if st.button("Transcribe!"):
     print(f"downloading from link: {link}")
